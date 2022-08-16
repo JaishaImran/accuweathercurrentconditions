@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/cerulean/bootstrap.min.css"
+          integrity="sha512-dQLT/B7byn2LjN/DN4zeBKpwGV6qbidV0XiMRWQOL7TGrV7FkZFldkGG+DGMU+CQnMTcRZlUI7GMWt1j6akNew=="
+          rel="stylesheet"/>
+    <title>Weather App </title>
+</head>
+
+<body>
+<div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="../">Current Conditions <span style="color: rgb(39, 117, 161);"> <strong> - Weather </strong>
+        </span> </a>
+        <a class="navbar-tech" href="https://developer.accuweather.com/">https://developer.accuweather.com</a>
+    </div>
+</div>
+
+<br/><br/> <br>
+<div class="jumbotron" id="jumbotron" style="text-align: center; margin-top:-50px">
+    <h1 class="display-5">CROP2X</h1>
+    <h5>ACCU WEATHER APIs</h5>
+
+    <img class="image" src="{% static 'images/weather.png' %}" style="width:100px; margin-bottom:-50px; ">
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <form class="col-md" method="post">
+    {% csrf_token %}
+    <div class=" input-group">
+
+        <input class="form-control" name="city" placeholder="Find City Current Conditions & Forecast" type="text">
+        <div class="input-group-btn">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </div>
+    <form>
+</nav>
+<br> <br>
+<div class="row">
+    <div class="col d-flex justify-content-center">
+    <div class=" card text-white bg-light mb-6">
+        <div class=" card-body">
+            <h4><span class="badge badge-primary">Local Observation Date & Time :</span> {{LocalObservationDateTime}}</h4>
+            <h4><span class="badge badge-primary">Epoch Time :</span> {{EpochTime}}</h4>
+            <h4><span class="badge badge-primary">Weather Text :</span> {{WeatherText}}</h4>
+            <h4><span class="badge badge-primary">Precipitation Type :</span> {{PrecipitationType}} </h4>
+            <h4><span class="badge badge-primary">Is Day Time : </span> {{IsDayTime}}</h4>
+            <h4><span class="badge badge-primary">Temperature Metric Value :</span> {{TemperatureMetricValue}}</h4>
+            <h4><span class="badge badge-primary">Temperature Metric Unit Type :</span> {{TemperatureMetricUnitType}}
+            </h4>
+            <h4><span class="badge badge-primary">Temperature Imperial Value :</span> {{TemperatureImperialValue}}</h4>
+            <h4><span class="badge badge-primary">Temperature Imperial Unit Type :</span>
+                {{TemperatureImperialUnitType}} </h4>
+            <h4><span class="badge badge-primary">Real Feel Temperature Metric Unit Type : </span>
+                {{RealFeelTemperatureMetricUnitType}}</h4>
+            <h4><span class="badge badge-primary">Real Feel Temperature Metric Phrase :</span>
+                {{RealFeelTemperatureMetricPhrase}}</h4>
+            <h4><span class="badge badge-primary">Real Feel Temperature Imperial Value :</span>
+                {{RealFeelTemperatureImperialValue}}</h4>
+            <h4><span class="badge badge-primary">Real Feel Temperature Imperial Unit Type :</span>
+                {{RealFeelTemperatureImperialUnitType}}</h4>
+            <h4><span class="badge badge-primary">Real Feel Temperature Shade Imperial Phrase :</span>
+                {{RealFeelTemperatureShadeImperialPhrase}} </h4>
+            <h4><span class="badge badge-primary">Relative Humidity : </span> {{RelativeHumidity}}</h4>
+            <h4><span class="badge badge-primary">Indoor Relative Humidity :</span> {{IndoorRelativeHumidity}}</h4>
+            <h4><span class="badge badge-primary">Dew Point Metric Value :</span> {{DewPointMetricValue}}</h4>
+            <h4><span class="badge badge-primary">Dew Point Imperial Value :</span> {{DewPointImperialValue}}</h4>
+            <h4><span class="badge badge-primary">Dew Point Imperial Unit Type :</span> {{DewPointImperialUnitType}}
+            </h4>
+            <h4><span class="badge badge-primary">Wind Direction Degrees : </span> {{WindDirectionDegrees}}</h4>
+            <h4><span class="badge badge-primary">Wind Direction Localized :</span> {{WindDirectionLocalized}}</h4>
+            <h4><span class="badge badge-primary">Wind Direction English :</span> {{WindDirectionEnglish}}</h4>
+            <h4><span class="badge badge-primary">Wind Speed Metric Value :</span> {{WindSpeedMetricValue}}</h4>
+            <h4><span class="badge badge-primary">Wind Speed Metric Unit Type :</span> {{WindSpeedMetricUnitType}} </h4>
+            <h4><span class="badge badge-primary">Wind Speed Imperial Value : </span> {{WindSpeedImperialValue}}</h4>
+            <h4><span class="badge badge-primary">Wind Gust Speed Metric Value :</span> {{WindGustSpeedMetricValue}}
+            </h4>
+            <h4><span class="badge badge-primary">Wind Gust Speed Imperial Value :</span> {{WindGustSpeedImperialValue}}
+            </h4>
+            <h4><span class="badge badge-primary">UV Index :</span> {{UVIndex}}</h4>
+            <h4><span class="badge badge-primary">UV Index Text :</span> {{UVIndexText}} </h4>
+            <h4><span class="badge badge-primary">Visibility Metric Value : </span> {{VisibilityMetricValue}}</h4>
+            <h4><span class="badge badge-primary">Visibility Metric Unit :</span> {{VisibilityMetricUnit}}</h4>
+            <h4><span class="badge badge-primary">Visibility Metric UnitType :</span> {{VisibilityMetricUnitType}}</h4>
+            <h4><span class="badge badge-primary">Visibility Imperial Value :</span> {{VisibilityImperialValue}}</h4>
+            <h4><span class="badge badge-primary">Visibility Imperial Unit :</span> {{VisibilityImperialUnit}} </h4>
+            <h4><span class="badge badge-primary">Visibility Imperial UnitType : </span> {{VisibilityImperialUnitType}}
+            </h4>
+            <h4><span class="badge badge-primary">Obstructions To Visibility :</span> {{ObstructionsToVisibility}}</h4>
+            <h4><span class="badge badge-primary">Cloud Cover :</span> {{CloudCover}}</h4>
+            <h4><span class="badge badge-primary">Ceiling Metric Value :</span> {{CeilingMetricValue}}</h4>
+            <h4><span class="badge badge-primary">Ceiling Metric Unit :</span> {{CeilingMetricUnit}} </h4>
+            <h4><span class="badge badge-primary">Ceiling Metric UnitType : </span> {{CeilingMetricUnitType}}</h4>
+            <h4><span class="badge badge-primary">Ceiling Imperial Value :</span> {{CeilingImperialValue}} </h4>
+            <h4><span class="badge badge-primary">Ceiling Imperial Unit : </span> {{CeilingImperialUnit}}</h4>
+            <h4><span class="badge badge-primary">Ceiling Imperial Unit Type :</span> {{CeilingImperialUnitType}}</h4>
+            <h4><span class="badge badge-primary">Pressure Metric Value :</span> {{PressureMetricValue}}</h4>
+            <h4><span class="badge badge-primary">Pressure Metric Unit :</span> {{PressureMetricUnit}}</h4>
+            <h4><span class="badge badge-primary">Pressure Metric Unit Type :</span> {{PressureMetricUnitType}} </h4>
+            <h4><span class="badge badge-primary">Pressure Imperial Value : </span> {{PressureImperialValue}}</h4>
+            <h4><span class="badge badge-primary">Pressure ImperialUnit :</span> {{PressureImperialUnit}}</h4>
+            <h4><span class="badge badge-primary">Pressure Imperial Unit Type :</span> {{PressureImperialUnitType}}</h4>
+            <h4><span class="badge badge-primary">Pressure Tendency Locailzed Text :</span>
+                {{PressureTendencyLocailzedText}}</h4>
+            <h4><span class="badge badge-primary">Pressure Tendency Code :</span> {{PressureTendencyCode}} </h4>
+            <h4><span class="badge badge-primary">Apparent Temperature Metric Value : </span>
+                {{ApparentTemperatureMetricValue}}</h4>
+            <h4><span class="badge badge-primary">Apparent Temperature Metric Unit :</span>
+                {{ApparentTemperatureMetricUnit}}</h4>
+            <h4><span class="badge badge-primary">Apparent Temperature Metric Unit Type :</span>
+                {{ApparentTemperatureMetricUnitType}}</h4>
+            <h4><span class="badge badge-primary">Apparent Temperature Imperial Value :</span>
+                {{ApparentTemperatureImperialValue}}</h4>
+            <h4><span class="badge badge-primary">Apparent Temperature Imperial Unit :</span>
+                {{ApparentTemperatureImperialUnit}} </h4>
+            <h4><span class="badge badge-primary">Apparent Temperature Imperial Unit Type : </span>
+                {{ApparentTemperatureImperialUnitType}}</h4>
+            <h4><span class="badge badge-primary">Wind Chill Temperature Metric Value :</span>
+                {{WindChillTemperatureMetricValue}}</h4>
+            <h4><span class="badge badge-primary">Wind Chill Temperature Metric Unit :</span>
+                {{WindChillTemperatureMetricUnit}}</h4>
+            <h4><span class="badge badge-primary">Wind ChillTemperatureMetricUnitType :</span>
+                {{WindChillTemperatureMetricUnitType}}</h4>
+            <h4><span class="badge badge-primary">Wind ChillTemperatureImperialValue :</span>
+                {{WindChillTemperatureImperialValue}} </h4>
+            <h4><span class="badge badge-primary">Wind ChillTemperatureImperialUnit : </span>
+                {{WindChillTemperatureImperialUnit}}</h4>
+            <h4><span class="badge badge-primary">Wind ChillTemperatureImperialUnitType :</span>
+                {{WindChillTemperatureImperialUnitType}} </h4>
+            <h4><span class="badge badge-primary">Wet Bulb Temperature Metric Value : </span>
+                {{WetBulbTemperatureMetricValue}}</h4>
+            <h4><span class="badge badge-primary">Wet Bulb Temperature Metric Unit :</span>
+                {{WetBulbTemperatureMetricUnit}}</h4>
+            <h4><span class="badge badge-primary">Wet Bulb Temperature Metric Unit Type :</span>
+                {{WetBulbTemperatureMetricUnitType}}</h4>
+            <h4><span class="badge badge-primary">Wet Bulb Temperature Imperial Value :</span>
+                {{WetBulbTemperatureImperialValue}}</h4>
+            <h4><span class="badge badge-primary">Wet Bulb Temperature Imperial Unit :</span>
+                {{WetBulbTemperatureImperialUnit}} </h4>
+            <h4><span class="badge badge-primary">Wet Bulb Temperature Imperial Unit Type : </span>
+                {{WetBulbTemperatureImperialUnitType}}</h4>
+            <h4><span class="badge badge-primary">Precipitation Summary Precipitation Metric Value :</span>
+                {{PrecipitationSummaryPrecipitationMetricValue}}</h4>
+            <h4><span class="badge badge-primary">Precipitation Summary Precipitation Metric Unit :</span>
+                {{PrecipitationSummaryPrecipitationMetricUnit}}</h4>
+            <h4><span class="badge badge-primary">Precipitation Summary Precipitation Metric UnitType :</span>
+                {{PrecipitationSummaryPrecipitationMetricUnitType}}</h4>
+            <h4><span class="badge badge-primary">Precipitation Summary Precipitation Imperial Value :</span>
+                {{PrecipitationSummaryPrecipitationImperialValue}} </h4>
+            <h4><span class="badge badge-primary">Precipitation Summary Precipitation Imperial Unit : </span>
+                {{PrecipitationSummaryPrecipitationImperialUnit}}</h4>
+            <h4><span class="badge badge-primary">Precipitation Summary Precipitation Imperial UnitType :</span>
+                {{PrecipitationSummaryPrecipitationImperialUnitType}}</h4>
+        </div>
+    </div>
+</body>
+
+</html>
